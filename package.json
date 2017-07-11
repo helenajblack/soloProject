@@ -13,6 +13,8 @@
     "angular": "^1.6.5",
     "angular-route": "^1.6.5",
     "body-parser": "^1.17.2",
-    "express": "^4.15.3"
+    "express": "^4.15.3",
+    "twilio": "^3.4.0",
+    "watson-developer-cloud": "^2.34.0"
   }
 }

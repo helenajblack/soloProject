@@ -27,6 +27,13 @@ Blue: 4dd7fa
 
 + Google Maps Geocoding and Reverse Geocoding
 key:
-AIzaSyC0R6Xns-4_z1Vex1owYbr67ICJv1rd0lM
+
+AIzaSyBuw0vQhDNOuKn02d4Z0LZ1KyM1gm1gMnk
 URL:
-https://maps.googleapis.com/maps/api/geocode/json?latlng=(lat and longitude here)&key=AIzaSyC0R6Xns-4_z1Vex1owYbr67ICJv1rd0lM
+https://maps.googleapis.com/maps/api/geocode/json?latlng=(lat and longitude here)&key=
+AIzaSyBuw0vQhDNOuKn02d4Z0LZ1KyM1gm1gMnk
+
+Twilio
+test key
+authToken: ACe2174850132f262cd41010d72b00d102
+key: d0b02e9c3c3d60058364e5a66da532ba

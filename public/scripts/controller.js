@@ -1,28 +1,73 @@
-var app = angular.module('myApp', ['ngRoute']);
+var app = angular.module('apiController', ['ngRoute']);
 
 app.config(function($routeProvider) {
   $routeProvider
     .when('/emergency', {
       templateUrl: 'views/routes/prompts.html',
-      controller: 'apiController'
+      controller: 'apiController as ac'
     })
     .when('/tutorial', {
       templateUrl: 'views/routes/tutorial.html',
-      controller: 'apiController'
+      controller: 'apiController as ac'
     });
 });
 
-myApp.controller('apiController', function(googleMapsAPI) {
-  console.log('API controller loaded');
+app.controller('apiController', apiControllerFunction);
 
-  var vm = this;
+function apiControllerFunction() {
+  console.log('In controller');
+}
 
-  //google maps function
-  vm.getProfile = function() {
-    googleMapsAPI.reverseGeocodingData().then(function(response) {
-      console.log('in googleMaps API');
-      vm.location = response;
-      console.log('my data:', vm.location);
-    });
+// google maps
+function getLocation() {
+  console.log('in getLocation');
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition, showError);
+  } else {
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+  lat = position.coords.latitude;
+  lon = position.coords.longitude;
+  console.log('in long lat', lon, lat);
+  latlon = new google.maps.LatLng(lat, lon);
+  mapholder = document.getElementById("mapholder");
+  mapholder.style.height = '250 px';
+  mapholder.style.width = '500 px';
+
+  var myOptions = {
+    center: latlon,
+    zoom: 14,
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    mapTypeControl: false,
+    navigationControlOptions: {
+      style: google.maps.NavigationControlStyle.SMALL
+    }
   };
-}); //end google api service call
+
+  var map = new google.maps.Map(document.getElementById("mapholder"), myOptions);
+  var marker = new google.maps.Marker({
+    position: latlon,
+    map: map,
+    title: "You are here!"
+  });
+}
+
+function showError(error) {
+  switch (error.code) {
+    case error.PERMISSION_DENIED:
+      x.innerHTML = "User denied the request for Geolocation.";
+      break;
+    case error.POSITION_UNAVAILABLE:
+      x.innerHTML = "Location information is unavailable.";
+      break;
+    case error.TIMEOUT:
+      x.innerHTML = "The request to get user location timed out.";
+      break;
+    case error.UNKNOWN_ERROR:
+      x.innerHTML = "An unknown error occurred.";
+      break;
+  }
+}

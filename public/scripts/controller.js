@@ -14,8 +14,20 @@ app.config(function($routeProvider) {
 
 app.controller('apiController', apiControllerFunction);
 
-function apiControllerFunction() {
+function apiControllerFunction(twilioService) {
   console.log('In controller');
+  var vm = this;
+
+  vm.makeCall = function() {
+    var object = {};
+
+
+    twilioService.makeCall().then(function(response) {
+      console.log(response);
+    });
+  };
+
+
 }
 
 // google maps
@@ -70,4 +82,5 @@ function showError(error) {
       x.innerHTML = "An unknown error occurred.";
       break;
   }
+
 }

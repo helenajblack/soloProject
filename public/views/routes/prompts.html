@@ -1,3 +1,11 @@
-<p id="mapholder">Click the button to get your position.</p>
+<p id="mapholder" ng-show="toggleMap">
+</p>
+<button class="btn btn-info" onclick="getLocation()" ng-click="toggleMap= !toggleMap">Get Location</button>
 
-<button onclick="getLocation()">Try It</button>
+<table class="table table-striped" id="footer">
+  <tr>
+    <td class="promptButton">
+      <button type="button" class="btn btn-danger" ng-click="ac.makeCall()">Call Now</button>
+    </td>
+    <tr>
+</table>

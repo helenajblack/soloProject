@@ -31,12 +31,6 @@ h5 {
   color: #4dd7fa;
 }
 
-header {
-  height: 150px;
-  width: 100%;
-  background-color: #4dd7fa;
-}
-
 p {
   text-align: left;
   padding: 5px;
@@ -45,6 +39,21 @@ p {
 em {
   color: #4dd7fa;
   padding: 1px;
+}
+
+
+/*header and footer */
+
+header {
+  height: 150px;
+  width: 100%;
+  background-color: #4dd7fa;
+}
+
+#footer {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
 }
 
 
@@ -76,6 +85,13 @@ em {
 .promptButton {
   width: 50%;
   text-align: center;
+}
+
+#callNowButton {
+  text-align: center;
+  padding-top: 10px;
+  width: 50%;
+  margin-left: 25%;
 }
 
 

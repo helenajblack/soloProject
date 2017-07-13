@@ -4,14 +4,14 @@ var app = express();
 var path = require('path');
 var bodyParser = require('body-parser');
 var watson = require('./modules/watsonR');
-// var twilio = require('./modules/twilioR');
+var twilio = require('./modules/twilioR');
 
 //uses
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({
   extended: true
 }));
-// app.use('/twilioR', twilio);
+app.use('/twilioR', twilio);
 app.use('/watsonR', watson);
 
 //globals

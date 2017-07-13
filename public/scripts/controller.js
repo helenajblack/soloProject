@@ -14,7 +14,7 @@ app.config(function($routeProvider) {
 
 app.controller('apiController', apiControllerFunction);
 
-function apiControllerFunction(twilioService, $http) {
+function apiControllerFunction(twilioService, $http, watsonService) {
   console.log('In controller');
   var vm = this;
 
@@ -30,10 +30,12 @@ function apiControllerFunction(twilioService, $http) {
   vm.playVoice = function() {
     console.log('in playVoice');
     var data = {
-      text: 'hello world'
+      text: 'I need assistance'
     };
     $http.post('/watsonR', data).then(function(res) {
       console.log(res);
+      // watsonService.effect1.play();
+
     });
   };
 

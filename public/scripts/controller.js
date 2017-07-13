@@ -14,19 +14,28 @@ app.config(function($routeProvider) {
 
 app.controller('apiController', apiControllerFunction);
 
-function apiControllerFunction(twilioService) {
+function apiControllerFunction(twilioService, $http) {
   console.log('In controller');
   var vm = this;
 
   vm.makeCall = function() {
     var object = {};
-
+    console.log('makeCall');
 
     twilioService.makeCall().then(function(response) {
       console.log(response);
     });
   };
 
+  vm.playVoice = function() {
+    console.log('in playVoice');
+    var data = {
+      text: 'hello world'
+    };
+    $http.post('/watsonR', data).then(function(res) {
+      console.log(res);
+    });
+  };
 
 }
 
@@ -82,5 +91,4 @@ function showError(error) {
       x.innerHTML = "An unknown error occurred.";
       break;
   }
-
 }

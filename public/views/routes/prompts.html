@@ -79,10 +79,16 @@
     <div class="modal-content">
       <span class="close" onclick="document.getElementById('myModal').style.display='none';">&times;</span>
       <p>Are you sure you're ready to make the call to 911? Hit <em>X</em> in the upper right corner to return to the prompts. </p>
-      <button type="button" class="btn btn-primary btn-sm" ng-click="ac.makeCall()" id="callNowButton">Connect Call</button>
+      <button type="button" class="btn btn-primary btn-sm" ng-click="ac.makeCall(); introDiv = !introDiv " id="callNowButton">Connect Call</button>
     </div>
   </div>
 </div>
 
+<div ng-show="introDiv">
+  </br>
+  <h2>Thank you for using urgenC.<h2><h4> Your call to 911 is being made now. Please relax - help will be on the way shortly. Feel free to close out of this application.</h4>
+</div>
+
 <!-- for sound file creation -->
 <!-- <button type="button" name="button" ng-click="ac.playVoice()">Click</button> -->
+->

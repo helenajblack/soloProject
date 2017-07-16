@@ -1,13 +1,88 @@
-<p id="mapholder" ng-show="toggleMap">
-</p>
-<button class="btn btn-info" onclick="getLocation()" ng-click="toggleMap= !toggleMap">Get Location</button>
+<!-- Prompts -->
+<!-- intro -->
+<div ng-hide="introDiv" id="promptBox">
+  <p>Welcome to urgenC's prompt system. Please type your full name and then hit <em>Get My Location</em> to use your phone's GPS to locate you for emergency services.</p>
+  <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Full Name">
+  <!-- Google Map -->
+  <p id="mapholder" ng-show="toggleMap">
+  </p>
+  <button class="btn btn-info" onclick="getLocation(); alert('Please allow the application a moment to find your location. Hit OK to proceed, and then scroll down to the next prompt to continue.')" ng-click="toggleMap= !toggleMap; question1Div = !question1Div"
+    id="getLocationButton">Get Location</button>
 
-<button type="button" name="button" ng-click="ac.playVoice()">Click</button>Hello! I'm Allison, but you can change my voice however you wish.
+  <!-- questions -->
+  <div ng-show="question1Div" id="promptBox">
+    <p>What is your emergency?</p>
 
-<table class="table table-striped" id="footer">
-  <tr>
-    <td class="promptButton">
-      <button type="button" class="btn btn-danger" ng-click="ac.makeCall()">Call Now</button>
-    </td>
-    <tr>
-</table>
+    <button class="btn btn-primary" ng-click="residenceDiv = !residenceDiv">Home Invasion</button>
+    <button type="button" class="btn btn-info" onclick="alert('This feature is not yet supported')">Domestic Dispute</button>
+    <button class="btn btn-primary" onclick="alert('This feature is not yet supported')">Car Crash</button>
+    <button type="button" class="btn btn-info" onclick="alert('This feature is not yet supported')">Stalking</button>
+    <button class="btn btn-primary" onclick="alert('This feature is not yet supported')">Natural Disaster</button>
+    <button type="button" class="btn btn-info" onclick="alert('This feature is not yet supported')">Medical</button>
+    <button class="btn btn-primary" onclick="alert('This feature is not yet supported')">Physical Assault</button>
+  </div>
+
+  <div ng-show="residenceDiv" id="promptBox">
+    <p>What kind of residence are you in?</p>
+    <button class="btn btn-primary" onclick="alert('This feature is not yet supported')">Home</button>
+    <button type="button" class="btn btn-info" ng-click="question2Div = !question2Div">Apartment</button>
+    <button type="button" class="btn btn-primary" onclick="alert('This feature is not yet supported')">Business</button>
+  </div>
+
+  <div ng-show="question2Div" id="promptBox">
+    <p>Do you know the person/s who entered your home?</p>
+    <button class="btn btn-primary" onclick="alert('This feature is not yet supported')">Yes</button>
+    <button type="button" class="btn btn-info" ng-click="question3Div = !question3Div">No</button>
+  </div>
+
+  <div ng-show="question3Div" id="promptBox">
+    <p>How many intruders are there?</p>
+    <button class="btn btn-primary" ng-click="question4Div = !question4Div">1</button>
+    <button type="button" class="btn btn-info" onclick="alert('This feature is not yet supported')">2</button>
+    <button class="btn btn-primary" onclick="alert('This feature is not yet supported')">3</button>
+    <button type="button" class="btn btn-info" onclick="alert('This feature is not yet supported')">4+</button>
+  </div>
+
+  <div ng-show="question4Div" id="promptBox">
+    <p>Is the intruder armed?</p>
+    <button class="btn btn-primary" ng-click="question5Div = !question5Div">Yes, with a knife</button>
+    <button type="button" class="btn btn-info" onclick="alert('This feature is not yet supported')">Yes, with a gun</button>
+    <button class="btn btn-primary" onclick="alert('This feature is not yet supported')">Yes, with something else</button>
+    <button type="button" class="btn btn-info" onclick="alert('This feature is not yet supported')">No</button>
+  </div>
+
+  <div ng-show="question5Div" id="promptBox">
+    <p>Are you alone?</p>
+    <button class="btn btn-primary" ng-click="question6Div = !question6Div">Yes</button>
+    <button type="button" class="btn btn-info" onclick="alert('This feature is not yet supported')">No</button>
+  </div>
+
+  <div ng-show="question6Div" id="promptBox">
+    <p>Are there animals in the residence?</p>
+    <button class="btn btn-primary" ng-click="hideCallWarning = !hideCallWarning">Yes, a cat</button>
+    <button type="button" class="btn btn-info" onclick="alert('This feature is not yet supported')">Yes, a dog</button>
+    <button class="btn btn-primary" onclick="alert('This feature is not yet supported')">None</button>
+  </div>
+
+  <!-- make call button -->
+  <div ng-hide="hideCallWarning">
+    <p>Please do not hit <em>Call Now</em> until you have finished answering the prompts. </p>
+  </div>
+  <div ng-show="hideCallWarning">
+    <p>Thank you for answering! Please hit <em>Call Now</em> to proceed.</p>
+  </div>
+  <button type="button" class="btn btn-danger" onclick="document.getElementById('myModal').style.display='block';">Call Now</button>
+
+
+  <!-- Make Call Modal -->
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="document.getElementById('myModal').style.display='none';">&times;</span>
+      <p>Are you sure you're ready to make the call to 911? Hit <em>X</em> in the upper right corner to return to the prompts. </p>
+      <button type="button" class="btn btn-primary btn-sm" ng-click="ac.makeCall()" id="callNowButton">Connect Call</button>
+    </div>
+  </div>
+</div>
+
+<!-- for sound file creation -->
+<!-- <button type="button" name="button" ng-click="ac.playVoice()">Click</button> -->

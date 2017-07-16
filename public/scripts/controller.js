@@ -30,7 +30,7 @@ function apiControllerFunction(twilioService, $http, watsonService) {
   vm.playVoice = function() {
     console.log('in playVoice');
     var data = {
-      text: 'I need assistance'
+      text: ' '
     };
     $http.post('/watsonR', data).then(function(res) {
       console.log(res);

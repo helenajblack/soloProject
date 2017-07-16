@@ -1,7 +1,7 @@
 app.service('twilioService', ['$http', function($http) {
-  var vm = this;
+  var sv = this;
 
-  vm.makeCall = function() {
+  sv.makeCall = function() {
     objectToSend = {
       phone: "+16513543251"
     };

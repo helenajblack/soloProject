@@ -24,7 +24,7 @@ router.post('/', function(req, res) {
   var params = {
     text: req.body.text,
     voice: 'en-US_AllisonVoice',
-    accept: 'audio/ogg'
+    accept: 'audio/wav'
   };
 
   text_to_speech.voice(params, function(error, voice) {
@@ -37,7 +37,7 @@ router.post('/', function(req, res) {
   // Pipe the synthesized text to a file.
   text_to_speech.synthesize(params).on('error', function(error) {
     console.log('Error:', error);
-  }).pipe(fs.createWriteStream('public/soundfiles/watson.ogg'));
+  }).pipe(fs.createWriteStream('public/soundfiles/emergency.wav'));
 
   res.send('something');
 });

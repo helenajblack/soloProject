@@ -50,10 +50,14 @@ header {
   background-color: #4dd7fa;
 }
 
-#footer {
-  position: fixed;
-  bottom: 0px;
-  left: 0px;
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
 }
 
 
@@ -94,6 +98,13 @@ header {
   margin-left: 25%;
 }
 
+#getLocationButton {
+  text-align: center;
+  padding-top: 10px;
+  width: 45%;
+  margin-left: 1%;
+}
+
 
 /*hideMode*/
 
@@ -123,9 +134,6 @@ header {
   width: 100vw;
 }
 
-
-/* Optional: Makes the sample page fill the window. */
-
 html, body {
   height: 100%;
   margin: 0;
@@ -134,4 +142,83 @@ html, body {
 
 #mapholder {
   padding-top: 300px;
+}
+
+
+/* The Modal (background) */
+
+.modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0);
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+}
+
+
+/* Modal Content/Box */
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  /* Could be more or less, depending on screen size */
+}
+
+
+/* The Close Button */
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover, .close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+/*styling*/
+
+#promptBox {
+  clear: both;
+  background: #ddd;
+  border-color: #27697a;
+  border-style: solid;
+  border-radius: 25px;
+  text-align: center;
+  padding: 15px;
+  margin-top: 10px;
+}
+
+
+/*fade*/
+
+.fade.ng-enter {
+  transition: 0.5s linear all;
+  opacity: 0;
+}
+
+.fade.ng-enter.ng-enter-active {
+  opacity: 1;
 }
